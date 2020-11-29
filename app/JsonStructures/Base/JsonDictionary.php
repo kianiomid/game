@@ -14,4 +14,9 @@ class JsonDictionary
     const NS_NAME = 'name';
     const NS_EMAIL = 'email';
     const NS_USER = 'user';
+    const NS_DESCRIPTOR = 'descriptor';
+    const NS_ENABLE = 'enable';
+    const NS_CREATED_AT = 'created_at';
+    const NS_UPDATED_AT = 'updated_at';
+    const NS_METHOD_GAMES = 'method_games';
 }

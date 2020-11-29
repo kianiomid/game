@@ -45,7 +45,7 @@ class BaseRepository extends PrettusBaseRepository
     {
 
         $reflect = new \ReflectionClass($modelClass);
-        $repository = __NAMESPACE__ . '\\' . $reflect->getShortName() . "Repository";
+        $repository = __NAMESPACE__ . '\\' . $reflect->getShortName() . "Repositories";
         return new $repository($app, $modelClass, $entityManager);
 
     }
