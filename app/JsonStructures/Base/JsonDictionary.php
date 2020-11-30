@@ -19,4 +19,6 @@ class JsonDictionary
     const NS_CREATED_AT = 'created_at';
     const NS_UPDATED_AT = 'updated_at';
     const NS_METHOD_GAMES = 'method_games';
+    const NS_DESCRIPTION = 'description';
+    const NS_CODE = 'code';
 }

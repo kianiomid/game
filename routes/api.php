@@ -22,6 +22,7 @@ Route::group([
     /* game */
     $router->group(['prefix' => 'game'], function ($router){
         $router->post('/method/index', [GameController::class, 'gameMethodLists']);
+        $router->post('/send-word', [GameController::class, 'sendWord']);
 
     });
 });

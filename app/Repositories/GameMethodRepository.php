@@ -26,5 +26,11 @@ class GameMethodRepository extends BaseRepository
         return GameMethod::latest()->get();
     }
 
+    public function loadByDescriptor($descriptor)
+    {
+        $query = GameMethod::whereDescriptor($descriptor)->first();
+        return $query;
+    }
+
 
 }

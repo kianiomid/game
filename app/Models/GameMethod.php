@@ -10,6 +10,8 @@ class GameMethod extends Model
     use HasFactory;
 
     const TABLE = "game_methods";
+    const ALL_WORD = 'all_word';
+    const CHARACTER_TO_CHARACTER = 'character_to_character';
 
     protected $table = self::TABLE;
 
