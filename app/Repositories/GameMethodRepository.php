@@ -8,6 +8,8 @@ use Illuminate\Container\Container as Application;
 class GameMethodRepository extends BaseRepository
 {
 
+    private static $instance = null;
+
     /**
      * @param Application $app
      * @param null $entityManager
@@ -15,7 +17,11 @@ class GameMethodRepository extends BaseRepository
      */
     public static function createInstance(Application $app, $entityManager = null)
     {
-        return new GameMethodRepository($app, new GameMethod(), $entityManager);
+        if (!self::$instance) {
+
+            self::$instance = new GameMethodRepository($app, new GameMethod(), $entityManager);
+        }
+        return self::$instance;
     }
 
     /**
@@ -26,6 +32,10 @@ class GameMethodRepository extends BaseRepository
         return GameMethod::latest()->get();
     }
 
+    /**
+     * @param $descriptor
+     * @return mixed
+     */
     public function loadByDescriptor($descriptor)
     {
         $query = GameMethod::whereDescriptor($descriptor)->first();

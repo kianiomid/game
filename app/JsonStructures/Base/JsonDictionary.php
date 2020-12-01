@@ -21,4 +21,10 @@ class JsonDictionary
     const NS_METHOD_GAMES = 'method_games';
     const NS_DESCRIPTION = 'description';
     const NS_CODE = 'code';
+    const NS_ACTUAL_REQUEST = 'actual_request';
+    const NS_MAX_REQUEST = 'max_request';
+    const NS_USER_REQUEST = 'user_request';
+    const NS_REMAIN_REQUEST = 'remain_request';
+    const NS_GAME_METHOD = 'game_method';
+    const NS_GAME_METHODS = 'game_methods';
 }

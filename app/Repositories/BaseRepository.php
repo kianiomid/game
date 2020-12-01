@@ -2,7 +2,6 @@
 
 namespace App\Repositories;
 
-use App\Http\Controllers\BGenerator\BaseController;
 use Illuminate\Support\Facades\DB;
 use Prettus\Repository\Eloquent\BaseRepository as PrettusBaseRepository;
 use Illuminate\Container\Container as Application;

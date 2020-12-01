@@ -22,19 +22,16 @@ class GameMethodJson extends BaseJsonStructure
      */
     public function toArray()
     {
-        $res = [];
+        $item = $this->options;
 
-        foreach ($this->options as $item) {
-
-            $res[JsonDictionary::NS_METHOD_GAMES][] = [
-                JsonDictionary::NS_ID => $item->getAttribute('id'),
-                JsonDictionary::NS_NAME => $item->getAttribute('name'),
-                JsonDictionary::NS_DESCRIPTOR => $item->getAttribute('descriptor'),
-                JsonDictionary::NS_ENABLE => $item->getAttribute('enable'),
-                JsonDictionary::NS_CREATED_AT => $item->getAttribute('created_at'),
-                JsonDictionary::NS_UPDATED_AT => $item->getAttribute('updated_at'),
-            ];
-        }
+        $res = [
+            JsonDictionary::NS_ID => $item->getAttribute('id'),
+            JsonDictionary::NS_NAME => $item->getAttribute('name'),
+            JsonDictionary::NS_DESCRIPTOR => $item->getAttribute('descriptor'),
+            JsonDictionary::NS_ENABLE => $item->getAttribute('enable'),
+            JsonDictionary::NS_CREATED_AT => $item->getAttribute('created_at'),
+            JsonDictionary::NS_UPDATED_AT => $item->getAttribute('updated_at'),
+        ];
 
         return $res;
     }

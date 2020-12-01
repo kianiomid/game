@@ -8,6 +8,8 @@ use Illuminate\Container\Container as Application;
 class UserRepository extends BaseRepository
 {
 
+    private static $instance = null;
+
     /**
      * @param Application $app
      * @param null $entityManager
@@ -15,7 +17,11 @@ class UserRepository extends BaseRepository
      */
     public static function createInstance(Application $app, $entityManager = null)
     {
-        return new UserRepository($app, new User(), $entityManager);
+        if (!self::$instance) {
+
+            self::$instance = new UserRepository($app, new User(), $entityManager);
+        }
+        return self::$instance;
     }
 
     /**

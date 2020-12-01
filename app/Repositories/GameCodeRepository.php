@@ -9,6 +9,8 @@ use Illuminate\Container\Container as Application;
 class GameCodeRepository extends BaseRepository
 {
 
+    private static $instance = null;
+
     /**
      * @param Application $app
      * @param null $entityManager
@@ -16,9 +18,17 @@ class GameCodeRepository extends BaseRepository
      */
     public static function createInstance(Application $app, $entityManager = null)
     {
-        return new GameCodeRepository($app, new GameCode(), $entityManager);
+        if (!self::$instance) {
+
+            self::$instance = new GameCodeRepository($app, new GameCode(), $entityManager);
+        }
+        return self::$instance;
     }
 
+    /**
+     * @param $word
+     * @return mixed
+     */
     public function getCodeByName($word)
     {
         $query = GameCode::whereName($word)->first();

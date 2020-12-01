@@ -6,7 +6,7 @@ namespace App\JsonStructures;
 use App\JsonStructures\Base\BaseJsonStructure;
 use App\JsonStructures\Base\JsonDictionary;
 
-class UserJson extends BaseJsonStructure
+class GameMethodListJson extends BaseJsonStructure
 {
 
     protected $options;
@@ -22,12 +22,15 @@ class UserJson extends BaseJsonStructure
      */
     public function toArray()
     {
-        $user = $this->options;
+        $gameMethods = [];
+        if (!empty($this->options)) {
+            foreach ($this->options as $gameMethod) {
+                $gameMethods[] = (new GameMethodJson($this->incrementalKey, $gameMethod))->toArray();
+            }
+        }
 
         $res = [
-            JsonDictionary::NS_ID => $user->getAttribute('id'),
-            JsonDictionary::NS_NAME => $user->getAttribute('name'),
-            JsonDictionary::NS_EMAIL => $user->getAttribute('email'),
+            JsonDictionary::NS_GAME_METHOD => $gameMethods
         ];
 
         return $res;

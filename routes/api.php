@@ -17,12 +17,13 @@ Route::group([
     $router->post('refresh', [JWTAuthController::class, 'refresh']);
 
     /* user profile */
-    $router->get('user-profile', [JWTAuthController::class, 'userProfile']);
+    $router->post('user-profile', [JWTAuthController::class, 'userProfile']);
 
     /* game */
     $router->group(['prefix' => 'game'], function ($router){
         $router->post('/method/index', [GameController::class, 'gameMethodLists']);
         $router->post('/send-word', [GameController::class, 'sendWord']);
+        $router->post('/user/status', [GameController::class, 'userStatus']);
 
     });
 });

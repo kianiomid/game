@@ -123,6 +123,8 @@ return [
 
     'cipher' => 'AES-256-CBC',
 
+    'ENTITY_MANAGER' => env('ENTITY_MANAGER'),
+
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers

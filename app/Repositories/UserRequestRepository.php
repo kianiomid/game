@@ -9,6 +9,8 @@ use Illuminate\Container\Container as Application;
 class UserRequestRepository extends BaseRepository
 {
 
+    private static $instance = null;
+
     /**
      * @param Application $app
      * @param null $entityManager
@@ -16,7 +18,11 @@ class UserRequestRepository extends BaseRepository
      */
     public static function createInstance(Application $app, $entityManager = null)
     {
-        return new UserRequestRepository($app, new UserRequest(), $entityManager);
+        if (!self::$instance) {
+
+            self::$instance = new UserRequestRepository($app, new UserRequest(), $entityManager);
+        }
+        return self::$instance;
     }
 
     /**
@@ -49,6 +55,18 @@ class UserRequestRepository extends BaseRepository
     public function queryByUserIdByGameMethodId($userId, $gameMethodId)
     {
         $query = UserRequest::whereUserId($userId)->whereGameMethodId($gameMethodId);
+        return $query;
+    }
+
+    /**
+     * @param $userId
+     * @return mixed
+     */
+    public function loadStatusUserByUserId($userId)
+    {
+        $query = UserRequest::whereUserId($userId)
+            ->get();
+
         return $query;
     }
 
